@@ -22,7 +22,7 @@ const colors = [
   '--color-A400',
   '--color-A700',
 ]
-const Home = ({}: Props) => {
+const Home = ({ }: Props) => {
   const dispatch = useAppDispatch()
 
   return (

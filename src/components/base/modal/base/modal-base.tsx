@@ -1,8 +1,5 @@
-import { Button, Col, Layout, Row } from 'antd'
-import styles from './style.module.scss'
-import { type IoClose } from 'react-icons/io5'
 import Modal from 'react-modal'
-const { Header, Content, Footer } = Layout
+
 const customStyles = {
   overlay: {
     zIndex: 1000,
@@ -44,31 +41,7 @@ const ModalBase = (props: Props) => {
           border: '1px solid var(--color-3)',
         }}
       >
-        <Layout style={{ width: '100%', height: '100%' }}>
-          <Header className={styles.header} style={{ display: props.header ? '' : 'none' }}>
-            <Row align={'middle'} style={{ height: '100%' }}>
-              <Col span={23} className={styles.colHeader}>
-                {props.header}
-              </Col>
-              <Col span={1} style={{ height: '100%' }}>
-                <Button
-                  onClick={props.onClose}
-                  icon={<IoClose />}
-                  type="link"
-                  className={styles.close}
-                  danger={true}
-                />
-              </Col>
-            </Row>
-          </Header>
-          <Content
-            className={styles.content}
-          // style={{ padding: props.fullScreen ? 0 : '0px 5px' }}
-          >
-            {props.children}
-          </Content>
-          {props.footer && <Footer className={styles.footer}>{props.footer}</Footer>}
-        </Layout>
+
       </div>
     </Modal>
   )

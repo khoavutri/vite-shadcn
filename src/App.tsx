@@ -11,7 +11,6 @@ import i18n from './i18n'
 import { setDarkMode, setLanguge } from './reducers/slice/themeLanguageSlice'
 import { useAppDispatch, useAppSelector } from './redux/store'
 import './App.css'
-import 'antd/dist/reset.css'
 import './theme/default-theme.scss'
 import './theme/pink-theme.scss'
 import './theme/purple-theme.scss'
@@ -21,7 +20,6 @@ import LoadingBar from './components/base/loading/LoadingBar'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import { DndProvider, TouchTransition, MouseTransition, Preview } from 'react-dnd-multi-backend'
-import { Button, ConfigProvider } from 'antd'
 import { darkTheme } from './managers/themes/dark-theme'
 import { lightTheme } from './managers/themes/light-theme'
 
@@ -67,27 +65,17 @@ const App = () => {
   return (
     <ErrorBoundry>
       <I18nextProvider i18n={i18n}>
-        <ConfigProvider theme={mode ? darkTheme : lightTheme}>
-          <DndProvider options={HTML5toTouch}>
-            <Preview>{generatePreview}</Preview>
-            <div
-              className="App"
-              data-theme={theme}
-              style={{ backgroundColor: mode ? '#000' : '#fff' }}
-            >
-              <LoadingBar />
-              <Router />
-              <Button
-                onClick={() => {
-                  dispatch(setDarkMode(!mode))
-                }}
-                style={{ marginTop: 30 }}
-              >
-                Change
-              </Button>
-            </div>
-          </DndProvider>
-        </ConfigProvider>
+        <DndProvider options={HTML5toTouch}>
+          <Preview>{generatePreview}</Preview>
+          <div
+            className="App"
+            data-theme={theme}
+            style={{ backgroundColor: mode ? '#000' : '#fff' }}
+          >
+            <LoadingBar />
+            <Router />
+          </div>
+        </DndProvider>
       </I18nextProvider>
     </ErrorBoundry>
   )
